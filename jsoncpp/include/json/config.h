@@ -28,6 +28,8 @@
 /// instead of C assert macro.
 //# define JSON_USE_EXCEPTION 1
 
+//disables force exit if json contains errors.
+#define MCPE_DISABLE_JSON_ERR 1 
 /// If defined, indicates that the source file is amalgated
 /// to prevent private header inclusion.
 /// Remarks: it is automatically defined in the generated amalgated header.

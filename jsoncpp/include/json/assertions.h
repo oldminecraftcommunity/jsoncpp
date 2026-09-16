@@ -15,10 +15,18 @@
 
 #if defined(JSON_USE_EXCEPTION)
 #define JSON_ASSERT( condition ) assert( condition );  // @todo <= change this into an exception throw
+#ifdef MCPE_DISABLE_JSON_ERR
+#define JSON_FAIL_MESSAGE( message ) 
+#else
 #define JSON_FAIL_MESSAGE( message ) throw std::runtime_error( message );
+#endif
 #else  // defined(JSON_USE_EXCEPTION)
 #define JSON_ASSERT( condition ) assert( condition );
+#ifdef MCPE_DISABLE_JSON_ERR
+#define JSON_FAIL_MESSAGE( message ) 
+#else
 #define JSON_FAIL_MESSAGE( message ) { std::cerr << message; exit(123); }
+#endif
 #endif
 
 #define JSON_ASSERT_MESSAGE( condition, message ) if (!( condition )) { JSON_FAIL_MESSAGE( message ) }
